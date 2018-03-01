@@ -9,3 +9,9 @@ license       = "MIT"
 
 requires "nim >= 0.17.2"
 
+
+# Directories
+srcDir = "src"
+binDir = "bin"
+bin = @["main"]
+

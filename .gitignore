@@ -1,0 +1,4 @@
+nimcache/
+/bin
+*.code-workspace
+*.exe

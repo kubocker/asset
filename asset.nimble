@@ -11,7 +11,8 @@ requires "nim >= 0.17.2"
 
 
 # Directories
-srcDir = "src"
-binDir = "bin"
-bin = @["main"]
+# srcDir = "src"
+# binDir = "bin"
+skipDirs = @["src"]
+bin = @["src/main"]
 

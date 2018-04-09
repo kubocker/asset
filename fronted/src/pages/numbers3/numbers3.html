@@ -14,4 +14,21 @@
 </ion-header>
 
 <ion-content padding>
+  <h2>予測</h2>
+    <ion-item>
+        <ion-label>六曜</ion-label>
+        <ion-select [(ngModel)]="toppings" multiple="true">
+          <ion-option>大安</ion-option>
+          <ion-option>仏滅</ion-option>
+          <ion-option>先勝</ion-option>
+          <ion-option>友引</ion-option>
+          <ion-option>先負</ion-option>
+          <ion-option>赤口</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+        </ion-item>
 </ion-content>

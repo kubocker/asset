@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import {
+  Numbers3Component
+} from '../../components/numbers3/numbers3'
+
 /**
  * Generated class for the Numbers3Page page.
  *

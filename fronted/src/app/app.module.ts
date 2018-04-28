@@ -1,8 +1,19 @@
 import { FormsModule } from '@angular/forms';
 import { MbscModule } from '@mobiscroll/angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+// add
+import 'hammerjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatCheckboxModule,
+  MatRadioModule,
+  MatCardModule,
+  MatInputModule,
+  //MatTableDataSource,
+} from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -30,6 +41,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MbscModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    //
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatCardModule,
+    MatInputModule,
+    // MatTableDataSource,
+    //
     ComponentsModule,
   ],
   bootstrap: [IonicApp],
@@ -45,6 +64,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })
 export class AppModule {}

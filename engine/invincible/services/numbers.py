@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from models import numbers, numbers3, numbers4
+
 
 __all__ = [
-    "Numbers",
-    "Loto"
+    "Numbers3",
+    "Numbers4"
 ]
 
 """
@@ -62,15 +64,9 @@ class Numbers(object):
         pass
 
 
+class Numbers3(Numbers):
+    pass
 
 
-class Loto(object):
-
-    def __init__(self, no_:str):
-        pass
-
-    def __call__(self, type_:str) -> tuple:
-        pass
-
-    def update(self):
-        pass
+class Numbers4(Numbers):
+    pass

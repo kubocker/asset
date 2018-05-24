@@ -16,8 +16,17 @@ warnings.filterwarnings(action="ignore", module="scipy", message="^internal gels
 
 MODELS = [
 
-    ["4925", "20180522", "531", "0612", "大安", "火"], # 003, 716
-    ["4924", "20180521", "109", "3636", "仏滅", "月"], # 003, 716
+    # ["4933", "20180630", "", "", "先負", "金"],
+    # ["4932", "20180531", "", "", "友引", "木"],
+    # ["4931", "20180530", "", "", "先勝", "水"],
+    # ["4930", "20180529", "", "", "赤口", "火"],
+    # ["4929", "20180528", "", "", "大安", "月"],
+
+    # ["4928", "20180525", "496", "8310", "友引", "金"],
+    ["4927", "20180524", "496", "8310", "先勝", "木"],
+    ["4926", "20180523", "393", "5297", "赤口", "水"],
+    ["4925", "20180522", "531", "0612", "大安", "火"],
+    ["4924", "20180521", "109", "3636", "仏滅", "月"],
 
     ["4923", "20180518", "934", "5468", "先勝", "金"],
     ["4922", "20180517", "851", "8202", "赤口", "木"],
@@ -1423,6 +1432,7 @@ MODELS = [
 
 MODELS2 = [
 
+    { "4926": ["109", "663", "246", "1193", "387"] },  # 531
     { "4925": ["109", "663", "246", "1193", "387"] },  # 531
     { "4924": ["130", "689", "320", "1071", "584"] },  # 109
 
@@ -1448,9 +1458,10 @@ MODELS2 = [
 
 DATA_NUMBERS3 = [
 
-
-    { "4925": ["109", "934", "909", "440", "909", "002"] }, # 531
-    { "4924": ["934", "851", "299", "002", "003", "716"] }, # 109
+    { "4927": ["393", "531", "851", "402", "934", "604"] }, # 393
+    { "4926": ["531", "109", "909", "037", "851", "299"] }, # 393
+    { "4925": ["109", "934", "497", "909", "909", "002"] }, # 531
+    { "4924": ["934", "851", "604", "299", "003", "716"] }, # 109
 
     { "4923": ["851", "909", "003", "119", "604", "909"] }, # 934 
     { "4922": ["909", "497", "402", "589", "299", "440"] }, # 851
@@ -3592,9 +3603,9 @@ if __name__ == '__main__':
 
     # X = []
     # Y = []
-    for _i in range(len(MODELS2)):
-        Y.append(MODELS[_i][2])
-        X.append(MODELS2[_i][MODELS[_i][0]])
+    # for _i in range(len(MODELS2)):
+    #     Y.append(MODELS[_i][2])
+    #     X.append(MODELS2[_i][MODELS[_i][0]])
 
     # for _i, _j in enumerate(DATA_NUMBERS3):
     # # for _i, _j in enumerate(DATA_NUMBERS4):
@@ -3627,28 +3638,28 @@ if __name__ == '__main__':
     print(py)
 
     TEST = []
-    #for _i in range(len(py)):
-    #    # if int(Y[_i]) == int(round(py[_i][0])):
-    #    # print(Y[_i], str(int(round(py[_i][0]))))
-    #    _true = Y[_i]
-    #    _pred = str(int(round(py[_i][0])))
+    for _i in range(len(py)):
+        # if int(Y[_i]) == int(round(py[_i][0])):
+        # print(Y[_i], str(int(round(py[_i][0]))))
+        _true = Y[_i]
+        _pred = str(int(round(py[_i][0])))
     
-    #    _true_list = list(_true)
-    #    _pred_list = list(_pred)
-    #    s = difflib.SequenceMatcher(None, _true, _pred).ratio()
+        _true_list = list(_true)
+        _pred_list = list(_pred)
+        s = difflib.SequenceMatcher(None, _true, _pred).ratio()
     
-    #    # print(list(set(_true_list) & set(_pred_list)))
-    #    # if len(list(set(_true_list) & set(_pred_list))) >= 2:
-    #    if len(list(set(_true_list) & set(_pred_list))) >= 1:
-    #        # print(_true, _pred, MODELS[_i][0], MODELS[_i][1])
-    #        print(_true, _pred, "第{0}回, {1}日".format(MODELS[_i][0], MODELS[_i][1]))
-    #        pass
-    #    if s >= 0.5:
-    #        # print(_true, _pred, MODELS[_i][0], MODELS[_i][1])
-    #        # print(_true, _pred, "第{0}回".format(MODELS[_i][0]))
-    #        TEST.append(MODELS[_i])
-    #        # TEST.append(MODELS[_i])
-    #    # print(MODELS[_i][0], MODELS[_i][1], _true, _pred)
+        # print(list(set(_true_list) & set(_pred_list)))
+        # if len(list(set(_true_list) & set(_pred_list))) >= 2:
+        if len(list(set(_true_list) & set(_pred_list))) >= 2:
+            # print(_true, _pred, MODELS[_i][0], MODELS[_i][1])
+            print(_true, _pred, "第{0}回, {1}日".format(MODELS[_i][0], MODELS[_i][1]))
+            pass
+        if s >= 0.5:
+            # print(_true, _pred, MODELS[_i][0], MODELS[_i][1])
+            # print(_true, _pred, "第{0}回".format(MODELS[_i][0]))
+            TEST.append(MODELS[_i])
+            # TEST.append(MODELS[_i])
+        # print(MODELS[_i][0], MODELS[_i][1], _true, _pred)
 
 
     for _n in range(len(MODELS)):
@@ -3679,7 +3690,7 @@ if __name__ == '__main__':
             # print(MODELS[_n][3])
             pass
 
-    #joblib.dump(model, 'numbers3_20180522_1.pkl')
+    joblib.dump(model, 'numbers3_20180525_2.pkl')
     # joblib.dump(model, 'numbers4_20180522_1.pkl')
     # joblib.dump(model, 'numbers4.pkl')
 
@@ -3687,16 +3698,17 @@ if __name__ == '__main__':
     # data = [003.0, 402.0, 119.0, 714.0, 909.0, 372.0]
     # data = [8659.0, 7807.0, 4336.0, 9814.0, 5108.0, 5135.0]
 
-    #data = [float("531"), float("109"), float("909"), float("037"), float("861"), float("299")] # 20180521
+    data = [float("496"), float("393"), float("851"), float("402"), float("037"), float("589")] # 20180521
+    # data = [float("393"), float("531"), float("402"), float("589")] # 20180521
     # data = [float("0612"), float("3636"), float("1143"), float("8670"), float("8202"), float("4336")] # 20180521
 
     # test = pandas.DataFrame()
 
-    #clf = joblib.load("numbers3_20180522_1.pkl")
+    clf = joblib.load("numbers3_20180525_2.pkl")
     # clf = joblib.load("numbers4_20180522_1.pkl")
-    #processor = clf.predict([data])
+    processor = clf.predict([data])
 
-    #print(processor)
+    print(processor)
 
     print(model.score(x, y))
     # mean_absolute_error(y, py)

@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.externals import joblib
 
 from config import NUMBERS, NUMBERS3, NUMBERS4
+from invincible import services as g
 
 
 """
@@ -68,7 +69,7 @@ from config import NUMBERS, NUMBERS3, NUMBERS4
 2014 - 友引
 """
 
-__all__ == [
+__all__ = [
     "predict",
     "predict_number",
     "get_info"
@@ -108,15 +109,16 @@ def predict_number(type_:str, vec_:list, file_:str):
     return _clf.predict([_vectors])
 
 
-def get_info(year_:str, six_week_:str):
+def get_info(year_:str, six_week_:str, type_:str):
+    _idx = (lambda x: 2 if type_ == "numbers3" else 3)
     for _i in range(len(NUMBERS)):
         if six_week_ == NUMBERS[_i][4]:
             if re.search(year_, NUMBERS[_i][1]):
-                print(NUMBERS[_i][3])
+                print(NUMBERS[_i][0], NUMBERS[_i][_idx(type_)])
 
 
 def main():
     pass
 
 if __name__ == '__main__':
-    predict("numbers3")
+    get_info("2014", "大安", "numbers3")

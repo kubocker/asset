@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 
 
+__all__ = [
+    "Loto6",
+    "Loto7"
+]
+
+
 class Loto(object):
 
     def __init__(self, no_:str):
@@ -11,3 +17,10 @@ class Loto(object):
 
     def update(self):
         pass
+
+
+class Loto6(Loto):
+    pass
+
+class Loto7(Loto):
+    pass

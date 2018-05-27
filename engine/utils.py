@@ -75,41 +75,129 @@ __all__ = [
     "get_info"
 ]
 
-def predict(type_:str):
+VECTORS = {
+    "vec_a": [],
+    "vec_b": [],
+}
+
+def get_vectors(type_:str):
     X = []
     Y = []
-    models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
-    for _k, _v in enumerate(models):
-        _idx = (lambda x: 2 if type_ == "numbers3" else 3)
+    _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
+    _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
+    for _k, _v in enumerate(_models):
         Y.append(NUMBERS[_k][_idx(type_)])
-        X.append(_v[NUMBERS[_k][0]])
+        # print(_v.values())
+
+def get_old_week(type_:str, old_week_:str=""):
+    X = []
+    Y = []
+    _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
+    _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
+    for _i in range(len(NUMBERS)):
+        _t = NUMBERS[_i][0]
+        _f = NUMBERS[_i][4]
+        _y = NUMBERS[_i][_idx(type_)]
+        _x = _models[_i][_t][4]
+        if len(old_week_) > 0:
+            if old_week_ == NUMBERS[_i][4]:
+                Y.append(NUMBERS[_i][0])
+                X.append(NUMBERS[_i][_idx(type_)])
+        else:
+            Y.append(_y)
+            X.append(_x)
+
+        # if len(list(set(_y) & set(_x))) >= 2:
+        #     print(_t, _f, _y, _x)
+
+    return Y, X
+
+def predict2(type_:str):
+    pass
+
+
+def proc(type_:str, vector_:str):
+    """
+    :method proc - 加工する
+    :param type_
+    """
+    X = []
+    Y = []
+    _idx = (lambda x: 2 if type_ == "numbers3" else 3)
+    _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
+    # for _k, _v in enumerate(_models):
+    #     if vector_ is "vec_a":
+    #         X.append(_v[NUMBERS[_k][0]])
+    #     elif vector_ is "vec_b":
+    #         _b, _c = get_old_week(type_, "")
+    #         X.append(_c)
+    #     Y.append(NUMBERS[_k][_idx(type_)])
+    _b, _c = get_old_week(type_)
+
+    # _x = pd.DataFrame(X)
+    # _y = pd.DataFrame(Y)
+    _x = pd.DataFrame(_c)
+    _y = pd.DataFrame(_b)
+
+    return (_y, _x)
+
+
+def predict(type_:str):
+    """
+    :method predict - 予測する
+    :param type_
+    """
+    from sklearn import linear_model
+
+    y, x = proc(type_, "vec_b")
 
     _model = linear_model.LinearRegression()
-    _x = pd.DataFrame(X)
-    _y = pd.DataFrame(Y)
-
-    _model.fit(_x, _y)
+    _model.fit(x, y)
     
-    _px = _x
+    _px = x
     _py = _model.predict(_px)
 
+    # for _i in range(len(_py)):
+    #     print("第{0}回 {1} {2}".format(NUMBERS[_i][0], round(_py[_i][0], 0), y[_i]))
     return (_model, _py)
+
+def check(type_:str):
+    _y, _x = proc(type_, "vec_b")
+    _, _py = predict(type_)
+
+    for _i in range(len(_y)):
+        _true = _y[_i]
+        _pred = str(int(round(_py[_i][0])))
+
+        _true_list = list(_true)
+        _pred_list = list(_pred)
+        s = difflib.SequenceMatcher(None, _true, _pred).ratio()
+    
+    # print(_y, _py)
 
 
 def predict_number(type_:str, vec_:list, file_:str):
+    """
+    """
     _model, _py = predict(type_)
     _vectors = []
     for _i in range(len(vec_)):
         _num = float(vec_[_i])
+        print(_num)
         _vectors.append(_num)
+
+    print(_model.coef_[0])
 
     joblib.dump(_model, file_)
     _clf = joblib.load(file_)
 
+    # return _clf.predict([_vectors])
     return _clf.predict([_vectors])
 
 
 def get_info(year_:str, six_week_:str, type_:str):
+    """
+    """
     _idx = (lambda x: 2 if type_ == "numbers3" else 3)
     for _i in range(len(NUMBERS)):
         if six_week_ == NUMBERS[_i][4]:
@@ -121,4 +209,21 @@ def main():
     pass
 
 if __name__ == '__main__':
-    get_info("2014", "大安", "numbers3")
+    # get_info("2014", "大安", "numbers3")
+
+    # print(predict("numbers3"))
+    WEEK = ["赤口", "友引", "仏滅", "先負", "先勝", "大安"]
+
+    # predict("numbers3")
+    # predict("numbers3")
+    data = ["535", "496", "604", "299", "531", "909"] # 4929
+
+    predict_num = predict_number("numbers3", data, "20180527_numbers3.pkl")
+    print(predict_num)
+
+    # for _x in WEEK:
+    # get_old_week("numbers3", "大安")
+    # get_vectors("numbers3")
+
+
+    

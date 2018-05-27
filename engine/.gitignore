@@ -1,5 +1,6 @@
 __pycache__/*
 invincible/__pycache__/*
 invincible/models/__pycache__/*
+invincible/services/__pycache__/*
 .ipynb_checkpoints/*
 scripts/__pycache__/*

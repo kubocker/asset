@@ -22,7 +22,7 @@ MODELS = [
     # ["4930", "20180529", "", "", "赤口", "火"],
     # ["4929", "20180528", "", "", "大安", "月"],
 
-    # ["4928", "20180525", "496", "8310", "友引", "金"],
+    ["4928", "20180525", "535", "0621", "友引", "金"],
     ["4927", "20180524", "496", "8310", "先勝", "木"],
     ["4926", "20180523", "393", "5297", "赤口", "水"],
     ["4925", "20180522", "531", "0612", "大安", "火"],
@@ -3601,27 +3601,6 @@ if __name__ == '__main__':
         Y.append(MODELS[_k][2])
         X.append(_v[MODELS[_k][0]])
 
-    # X = []
-    # Y = []
-    # for _i in range(len(MODELS2)):
-    #     Y.append(MODELS[_i][2])
-    #     X.append(MODELS2[_i][MODELS[_i][0]])
-
-    # for _i, _j in enumerate(DATA_NUMBERS3):
-    # # for _i, _j in enumerate(DATA_NUMBERS4):
-    #     _loc = _j[MODELS[_i][0]]
-    #     # _pre = str(int(round(_loc[4])))
-    #     # _aft = str(int(round(_loc[5])))
-    #     _pre = _loc[4]
-    #     _aft = _loc[5]
-    #     s = difflib.SequenceMatcher(None, _pre, _aft).ratio()
-
-    #     _pre_list = list(_pre)
-    #     _aft_list = list(_aft)
-
-    #     if len(list(set(_pre_list) & set(_aft_list))) >= 2:
-    #         print(_pre, _aft, MODELS[_i][0], MODELS[_i][1], MODELS[_i][4], MODELS[_i][5], MODELS[_i][3])
-
 
     model = linear_model.LinearRegression()
     x = pandas.DataFrame(X)
@@ -3635,60 +3614,6 @@ if __name__ == '__main__':
     px = x
     py = model.predict(px)
 
-    print(py)
-
-    TEST = []
-    for _i in range(len(py)):
-        # if int(Y[_i]) == int(round(py[_i][0])):
-        # print(Y[_i], str(int(round(py[_i][0]))))
-        _true = Y[_i]
-        _pred = str(int(round(py[_i][0])))
-    
-        _true_list = list(_true)
-        _pred_list = list(_pred)
-        s = difflib.SequenceMatcher(None, _true, _pred).ratio()
-    
-        # print(list(set(_true_list) & set(_pred_list)))
-        # if len(list(set(_true_list) & set(_pred_list))) >= 2:
-        if len(list(set(_true_list) & set(_pred_list))) >= 2:
-            # print(_true, _pred, MODELS[_i][0], MODELS[_i][1])
-            print(_true, _pred, "第{0}回, {1}日".format(MODELS[_i][0], MODELS[_i][1]))
-            pass
-        if s >= 0.5:
-            # print(_true, _pred, MODELS[_i][0], MODELS[_i][1])
-            # print(_true, _pred, "第{0}回".format(MODELS[_i][0]))
-            TEST.append(MODELS[_i])
-            # TEST.append(MODELS[_i])
-        # print(MODELS[_i][0], MODELS[_i][1], _true, _pred)
-
-
-    for _n in range(len(MODELS)):
-        ##### NUMBERS3 #####
-        # 2016 - 大安 x
-        # 2016 - 仏滅 x
-        # 2016 - 赤口 x
-        # 2016 - 先負 x
-        # 2016 - 先勝 x
-        # 2016 - 友引 x
-
-        # 2015 - 大安
-        # 2015 - 仏滅
-        # 2015 - 赤口
-        # 2015 - 先負
-        # 2015 - 先勝
-        # 2015 - 友引
-
-        # 2014 - 大安
-        # 2014 - 仏滅
-        # 2014 - 赤口
-        # 2014 - 先負
-        # 2014 - 先勝
-        # 2014 - 友引
-        if "仏滅" == MODELS[_n][4]:
-            # if re.search("2016", MODELS[_n][1]):
-            # print(MODELS[_n][0], MODELS[_n][2], MODELS[_n][1])
-            # print(MODELS[_n][3])
-            pass
 
     joblib.dump(model, 'numbers3_20180525_2.pkl')
     # joblib.dump(model, 'numbers4_20180522_1.pkl')

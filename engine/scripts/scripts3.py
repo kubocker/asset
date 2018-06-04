@@ -1,5 +1,5 @@
 
-from invincible import models
+
 
 JAPAN = [
     {},

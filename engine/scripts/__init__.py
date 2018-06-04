@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from utils import predict
-
-
-def pred():
-    predict("numbers3")
+from . import scripts
+from . import scripts3

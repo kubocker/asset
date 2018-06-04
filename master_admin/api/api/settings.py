@@ -249,6 +249,10 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
+    'mezzanine_api',
+    'rest_framework',
+    'rest_framework_swagger',
+    'oauth2_provider',
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -275,6 +279,8 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.SitePermissionMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+
+    'mezzanine_api.middleware.ApiMiddleware',
 )
 
 # Store these package names here as they may change in the future since
@@ -294,6 +300,14 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+
+#####################
+# REST API SETTINGS #
+#####################
+try:
+    from mezzanine_api.settings import *
+except ImportError:
+    pass
 
 ##################
 # LOCAL SETTINGS #

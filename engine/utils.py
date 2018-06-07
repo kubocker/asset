@@ -106,10 +106,8 @@ def get_old_week(type_:str, old_week_:str=""):
         else:
             Y.append(_y)
             X.append(_x)
-
         # if len(list(set(_y) & set(_x))) >= 2:
         #     print(_t, _f, _y, _x)
-
     return Y, X
 
 def predict2(type_:str):
@@ -183,16 +181,15 @@ def predict_number(type_:str, vec_:list, file_:str):
     _vectors = []
     for _i in range(len(vec_)):
         _num = float(vec_[_i])
-        print(_num)
         _vectors.append(_num)
 
-    print(_model.coef_[0])
+    joblib.dump(_model, "numbers3.pkl")
+    _clf = joblib.load("numbers3.pkl")
 
-    joblib.dump(_model, file_)
-    _clf = joblib.load(file_)
+    print("aaaaaaaaaaaa")
+    print(_clf)
 
-    # return _clf.predict([_vectors])
-    return _clf.predict([_vectors])
+    _clf.predict([_vectors])
 
 
 def get_info(year_:str, six_week_:str, type_:str):
@@ -209,7 +206,7 @@ def main():
     pass
 
 if __name__ == '__main__':
-    # get_info("2014", "大安", "numbers3")
+    get_info("2015", "先負", "numbers4")
 
     # print(predict("numbers3"))
     WEEK = ["赤口", "友引", "仏滅", "先負", "先勝", "大安"]
@@ -218,8 +215,8 @@ if __name__ == '__main__':
     # predict("numbers3")
     data = ["535", "496", "604", "299", "531", "909"] # 4929
 
-    predict_num = predict_number("numbers3", data, "20180527_numbers3.pkl")
-    print(predict_num)
+    # predict_num = predict_number("numbers3", data, "20180527_numbers3.pkl")
+    # print(predict_num)
 
     # for _x in WEEK:
     # get_old_week("numbers3", "大安")

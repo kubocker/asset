@@ -206,7 +206,8 @@ def main():
     pass
 
 if __name__ == '__main__':
-    get_info("2015", "先負", "numbers4")
+    # 2015 仏滅サイドスクリプト
+    get_info("2015", "大安", "numbers4")
 
     # print(predict("numbers3"))
     WEEK = ["赤口", "友引", "仏滅", "先負", "先勝", "大安"]

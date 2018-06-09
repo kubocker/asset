@@ -62,10 +62,7 @@ def get_old_week(type_:str, old_week_:str=""):
             X.append(_x)
         # if len(list(set(_y) & set(_x))) >= 2:
         #     print(_t, _f, _y, _x)
-    return Y, X
-
-def predict2(type_:str):
-    pass
+    return (Y, X)
 
 
 def proc(type_:str, vector_:str):
@@ -165,23 +162,9 @@ def get_info(year_:str, six_week_:str, type_:str):
 
 
 if __name__ == '__main__':
+    # @TODO: @kubocker
     # 2015 仏滅サイドスクリプト -> 4205
     # 2016 12月 numbers3 修正
-    get_info("2015", "仏滅", "numbers4")
 
-    # print(predict("numbers3"))
-    WEEK = ["赤口", "友引", "仏滅", "先負", "先勝", "大安"]
-
-    # predict("numbers3")
-    # predict("numbers3")
-    data = ["535", "496", "604", "299", "531", "909"] # 4929
-
-    # predict_num = predict_number("numbers3", data, "20180527_numbers3.pkl")
-    # print(predict_num)
-
-    # for _x in WEEK:
-    # get_old_week("numbers3", "大安")
-    # get_vectors("numbers3")
-
-
-    
+    _model, _pred = predict("numbers4")
+    print(_pred)

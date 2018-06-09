@@ -4,3 +4,6 @@ invincible/models/__pycache__/*
 invincible/services/__pycache__/*
 .ipynb_checkpoints/*
 scripts/__pycache__/*
+
+test_numbers*.ipynb
+numbers*_2018*.pkl

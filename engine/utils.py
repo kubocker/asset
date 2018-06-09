@@ -16,59 +16,6 @@ from config import NUMBERS, NUMBERS3, NUMBERS4
 from invincible import services as g
 
 
-"""
-~ NUMBERS3 ~
-2016 - 大安 x
-2016 - 仏滅 x
-2016 - 赤口 x
-2016 - 先負 x
-2016 - 先勝 x
-2016 - 友引 x
-
-2015 - 大安
-2015 - 仏滅
-2015 - 赤口
-2015 - 先負
-2015 - 先勝
-2015 - 友引
-
-2014 - 大安
-2014 - 仏滅
-2014 - 赤口
-2014 - 先負
-2014 - 先勝
-2014 - 友引
-
-~ NUMBERS4 ~
-2017 - 大安
-2017 - 仏滅
-2017 - 赤口
-2017 - 先負
-2017 - 先勝
-2017 - 友引
-
-2016 - 大安
-2016 - 仏滅
-2016 - 赤口
-2016 - 先負
-2016 - 先勝
-2016 - 友引
-
-2015 - 大安
-2015 - 仏滅
-2015 - 赤口
-2015 - 先負
-2015 - 先勝
-2015 - 友引
-
-2014 - 大安
-2014 - 仏滅
-2014 - 赤口
-2014 - 先負
-2014 - 先勝
-2014 - 友引
-"""
-
 __all__ = [
     "predict",
     "predict_number",
@@ -81,6 +28,8 @@ VECTORS = {
 }
 
 def get_vectors(type_:str):
+    """
+    """
     X = []
     Y = []
     _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
@@ -90,6 +39,11 @@ def get_vectors(type_:str):
         # print(_v.values())
 
 def get_old_week(type_:str, old_week_:str=""):
+    """
+    - 六曜取得する
+    :param type_
+    :param old_week_
+    """
     X = []
     Y = []
     _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
@@ -176,6 +130,10 @@ def check(type_:str):
 
 def predict_number(type_:str, vec_:list, file_:str):
     """
+    - numbersを予測する
+    :param type_
+    :param vec_
+    :param file_
     """
     _model, _py = predict(type_)
     _vectors = []
@@ -194,6 +152,10 @@ def predict_number(type_:str, vec_:list, file_:str):
 
 def get_info(year_:str, six_week_:str, type_:str):
     """
+    - 六曜データ入力するためのメソッド
+    :param year_
+    :param six_week_
+    :param type_
     """
     _idx = (lambda x: 2 if type_ == "numbers3" else 3)
     for _i in range(len(NUMBERS)):
@@ -202,12 +164,10 @@ def get_info(year_:str, six_week_:str, type_:str):
                 print(NUMBERS[_i][0], NUMBERS[_i][_idx(type_)])
 
 
-def main():
-    pass
-
 if __name__ == '__main__':
-    # 2015 仏滅サイドスクリプト
-    get_info("2014", "友引", "numbers4")
+    # 2015 仏滅サイドスクリプト -> 4205
+    # 2016 12月 numbers3 修正
+    get_info("2015", "仏滅", "numbers4")
 
     # print(predict("numbers3"))
     WEEK = ["赤口", "友引", "仏滅", "先負", "先勝", "大安"]

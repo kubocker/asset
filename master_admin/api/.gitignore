@@ -1,3 +1,5 @@
 api/__pycache__/*
 numbers3/__pycache__/*
+numbers3/migrations/*
 numbers4/__pycache__/*
+numbers4/migrations/*

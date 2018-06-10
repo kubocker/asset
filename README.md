@@ -27,3 +27,8 @@
   * Angular
 
 > docs
+
+
+### memo
+- django
+  - https://slideship.com/users/@massa142/presentations/2018/05/RjVo67zy1JyQiYqe3GgpLB/?p=36

@@ -8,6 +8,22 @@
 [現在]
 - Numbers3
 - Numbers4
+- Loto6
 - toto
 - toto mini A
 - toto mini B
+
+
+### 構成
+
+> master_admin
+  * api - Django
+  * web - flask
+
+> engine
+  * Python
+
+> assets
+  * Angular
+
+> docs

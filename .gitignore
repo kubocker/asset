@@ -2,3 +2,4 @@ nimcache/
 /bin
 *.code-workspace
 *.exe
+.DS_Store

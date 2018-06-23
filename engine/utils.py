@@ -35,8 +35,16 @@ def get_vectors(type_:str):
     _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
     _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
     for _k, _v in enumerate(_models):
-        Y.append(NUMBERS[_k][_idx(type_)])
         # print(_v.values())
+        Y.append(NUMBERS[_k][_idx(type_)])
+
+def get_vector(old_week_:str=""):
+    """
+    """
+    X    = []
+    Y    = []
+    TIME = []
+
 
 def get_old_week(type_:str, old_week_:str=""):
     """

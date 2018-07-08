@@ -19,7 +19,8 @@ from invincible import services as g
 __all__ = [
     "predict",
     "predict_number",
-    "get_info"
+    "get_info",
+    "get_vectors"
 ]
 
 VECTORS = {
@@ -27,23 +28,25 @@ VECTORS = {
     "vec_b": [],
 }
 
-def get_vectors(type_:str):
+def get_vectors(old_week_:str, type_:str, vectors_:list):
     """
     """
-    X = []
-    Y = []
-    _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
-    _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
-    for _k, _v in enumerate(_models):
-        # print(_v.values())
-        Y.append(NUMBERS[_k][_idx(type_)])
+    for _k in range(len(vectors_)):
+        vec = vectors_[_k]
+        if vec["name"] == old_week_ and vec["type"] == type_:
+            return vec["vectors"]
+    return [0, 0, 0]
 
-def get_vector(old_week_:str=""):
-    """
-    """
-    X    = []
-    Y    = []
-    TIME = []
+# def get_vectors(type_:str):
+#     """
+#     """
+#     X = []
+#     Y = []
+#     _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
+#     _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
+#     for _k, _v in enumerate(_models):
+#         # print(_v.values())
+#         Y.append(NUMBERS[_k][_idx(type_)])
 
 
 def get_old_week(type_:str, old_week_:str=""):

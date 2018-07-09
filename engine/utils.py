@@ -23,10 +23,6 @@ __all__ = [
     "get_vectors"
 ]
 
-VECTORS = {
-    "vec_a": [],
-    "vec_b": [],
-}
 
 def get_vectors(old_week_:str, type_:str, vectors_:list):
     """
@@ -36,17 +32,6 @@ def get_vectors(old_week_:str, type_:str, vectors_:list):
         if vec["name"] == old_week_ and vec["type"] == type_:
             return vec["vectors"]
     return [0, 0, 0]
-
-# def get_vectors(type_:str):
-#     """
-#     """
-#     X = []
-#     Y = []
-#     _idx    = (lambda x: 2 if type_ == "numbers3" else 3)
-#     _models = NUMBERS3 if type_ == "numbers3" else NUMBERS4
-#     for _k, _v in enumerate(_models):
-#         # print(_v.values())
-#         Y.append(NUMBERS[_k][_idx(type_)])
 
 
 def get_old_week(type_:str, old_week_:str=""):
@@ -71,8 +56,6 @@ def get_old_week(type_:str, old_week_:str=""):
         else:
             Y.append(_y)
             X.append(_x)
-        # if len(list(set(_y) & set(_x))) >= 2:
-        #     print(_t, _f, _y, _x)
     return (Y, X)
 
 
@@ -121,20 +104,6 @@ def predict(type_:str):
     #     print("第{0}回 {1} {2}".format(NUMBERS[_i][0], round(_py[_i][0], 0), y[_i]))
     return (_model, _py)
 
-def check(type_:str):
-    _y, _x = proc(type_, "vec_b")
-    _, _py = predict(type_)
-
-    for _i in range(len(_y)):
-        _true = _y[_i]
-        _pred = str(int(round(_py[_i][0])))
-
-        _true_list = list(_true)
-        _pred_list = list(_pred)
-        s = difflib.SequenceMatcher(None, _true, _pred).ratio()
-    
-    # print(_y, _py)
-
 
 def predict_number(type_:str, vec_:list, file_:str):
     """
@@ -152,9 +121,6 @@ def predict_number(type_:str, vec_:list, file_:str):
     joblib.dump(_model, "numbers3.pkl")
     _clf = joblib.load("numbers3.pkl")
 
-    print("aaaaaaaaaaaa")
-    print(_clf)
-
     _clf.predict([_vectors])
 
 
@@ -170,12 +136,3 @@ def get_info(year_:str, six_week_:str, type_:str):
         if six_week_ == NUMBERS[_i][4]:
             if re.search(year_, NUMBERS[_i][1]):
                 print(NUMBERS[_i][0], NUMBERS[_i][_idx(type_)])
-
-
-if __name__ == '__main__':
-    # @TODO: @kubocker
-    # 2015 仏滅サイドスクリプト -> 4205
-    # 2016 12月 numbers3 修正
-
-    _model, _pred = predict("numbers4")
-    print(_pred)

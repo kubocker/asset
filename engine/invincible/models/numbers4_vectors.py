@@ -15,7 +15,7 @@ VECTOR_NUMBERS4 = [
     { "name": "大安", "type": "-", "vectors": [1, 2, 4] },
 ]
 
-PATTER_NUMBERS4 = [
+PATTERN_NUMBERS4 = [
     ### +
     { "name": "pattern1", "type": "+", "patterns": [4, 4] },
     { "name": "pattern2", "type": "+", "patterns": [4, 3] },

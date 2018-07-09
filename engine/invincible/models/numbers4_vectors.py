@@ -14,3 +14,27 @@ VECTOR_NUMBERS4 = [
     { "name": "大安", "type": "+", "vectors": [0, 3, 5] },
     { "name": "大安", "type": "-", "vectors": [1, 2, 4] },
 ]
+
+PATTER_NUMBERS4 = [
+    ### +
+    { "name": "pattern1", "type": "+", "patterns": [4, 4] },
+    { "name": "pattern2", "type": "+", "patterns": [4, 3] },
+    { "name": "pattern3", "type": "+", "patterns": [3, 4] },
+    { "name": "pattern4", "type": "+", "patterns": [3, 3] },
+    { "name": "pattern5", "type": "+", "patterns": [3, 2] },
+    { "name": "pattern6", "type": "+", "patterns": [2, 3] },
+    { "name": "pattern7", "type": "+", "patterns": [2, 2] },
+    { "name": "pattern8", "type": "+", "patterns": [2, 1] },
+    { "name": "pattern9", "type": "+", "patterns": [1, 2] },
+
+    ### -
+    { "name": "pattern1", "type": "-", "patterns": [4, 4] },
+    { "name": "pattern2", "type": "-", "patterns": [4, 3] },
+    { "name": "pattern3", "type": "-", "patterns": [3, 4] },
+    { "name": "pattern4", "type": "-", "patterns": [3, 3] },
+    { "name": "pattern5", "type": "-", "patterns": [3, 2] },
+    { "name": "pattern6", "type": "-", "patterns": [2, 3] },
+    { "name": "pattern7", "type": "-", "patterns": [2, 2] },
+    { "name": "pattern8", "type": "-", "patterns": [2, 1] },
+    { "name": "pattern9", "type": "-", "patterns": [1, 2] },
+]

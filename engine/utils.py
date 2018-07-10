@@ -20,7 +20,8 @@ __all__ = [
     "predict",
     "predict_number",
     "get_info",
-    "get_vectors"
+    "get_vectors",
+    "get_patterns"
 ]
 
 
@@ -32,6 +33,22 @@ def get_vectors(old_week_:str, type_:str, vectors_:list):
         if vec["name"] == old_week_ and vec["type"] == type_:
             return vec["vectors"]
     return [0, 0, 0]
+
+
+def get_patterns(numbers_:list, patterns_:str, type_:str):
+    """
+    """
+    for _k, _v in enumerate(numbers_):
+        if _v["name"] == patterns_ and _v["type"] == type_:
+            # yield _v["patterns"]
+            return _v["patterns"]
+    return [3, 3]
+
+
+def get_pattern(type_:str, key_:int):
+    """
+    """
+    yield key_ + 1
 
 
 def get_old_week(type_:str, old_week_:str=""):

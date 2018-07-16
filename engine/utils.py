@@ -21,8 +21,25 @@ __all__ = [
     "predict_number",
     "get_info",
     "get_vectors",
-    "get_patterns"
+    "get_patterns",
+    "get_predicts"
 ]
+
+def get_predicts(type_:str, vectors_:list):
+    """
+    """
+    _sum = 0
+    for _v in vectors_:
+        if type_ in _v:
+            _sum = sum([ int(x) for x in _v[type_]])
+    _predicts = []
+    if _sum > 0:
+        for x in range(8, 37):
+            _p = str(int(_sum / x))
+            _predicts.append(_p)
+            print(_p, x)
+    # return _predicts
+
 
 
 def get_vectors(old_week_:str, type_:str, vectors_:list):

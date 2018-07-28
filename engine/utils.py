@@ -25,6 +25,10 @@ __all__ = [
     "get_predicts"
 ]
 
+def _sum(numbers_: str):
+    pass
+
+
 def get_predicts(type_:str, vectors_:list):
     """
     """
@@ -39,6 +43,9 @@ def get_predicts(type_:str, vectors_:list):
             _predicts.append(_p)
             print(_p, x)
     # return _predicts
+
+def get_data(type_:str, old_week_:str):
+    pass
 
 
 

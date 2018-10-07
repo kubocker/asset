@@ -1,3 +1,9 @@
 [submodule "backup"]
 	path = backup
 	url = git@github.com:kubocker/asset_backup.git
+[submodule "asset_admin_tool"]
+	path = asset_admin_tool
+	url = git@github.com:kubocker/asset_admin_tool.git
+[submodule "admin"]
+	path = admin
+	url = git@github.com:kubocker/asset_admin_tool.git

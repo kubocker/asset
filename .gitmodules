@@ -7,3 +7,6 @@
 [submodule "admin"]
 	path = admin
 	url = git@github.com:kubocker/asset_admin_tool.git
+[submodule "asset_engine"]
+	path = asset_engine
+	url = git@github.com:kubocker/asset_engine.git
